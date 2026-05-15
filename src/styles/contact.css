@@ -1,0 +1,11 @@
+.contact {
+    padding: 100px 80px;
+    background: #0f172a;
+    color: #e5e7eb;
+    text-align: center;
+}
+
+.contact p {
+    color: #cbd5f5;
+    margin-bottom: 15px;
+}

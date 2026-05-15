@@ -1,0 +1,33 @@
+.experience {
+    padding: 100px 80px;
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+.exp-card {
+    background: #020617;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 1px solid #1e293b;
+}
+
+.exp-card h3 {
+    color: #38bdf8;
+    margin-bottom: 5px;
+}
+
+.exp-card span {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.exp-card ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.exp-card li {
+    margin-bottom: 8px;
+    color: #cbd5f5;
+}
