@@ -3,27 +3,30 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
-    {
-        title: "BOOKSआलय – AI-Powered Book Discovery Platform",
-        description: "A personalized book recommendation platform featuring mood-based discovery, goal-based search, and AI-driven summaries using NLP concepts.",
-        tags: ["React.js", "JavaScript", "NLP", "APIs", "CSS"],
-        github: "https://github.com/saiupadhyay/BooksAalay.git",
-        demo: "#"
-    },
-    {
-        title: "Mallow for All – Accessibility Website",
-        description: "A web platform focused on inclusive and accessible design, ensuring usability for all users with clean UI and responsive layouts.",
-        tags: ["React.js", "JavaScript", "HTML", "CSS"],
-        github: "https://github.com/saiupadhyay/mallow-for-all-eccom.git",
-        demo: "#"
-    },
-    {
-        title: "Snake Game",
-        description: "A classic snake game built using JavaScript, demonstrating game logic, state handling, and interactive UI behavior.",
-        tags: ["JavaScript", "HTML", "CSS"],
-        github: "https://github.com/saiupadhyay/Snake-Game.git",
-        demo: "#"
-    }
+  {
+    title: "AI Personal CFO",
+    description:
+      "An AI-powered financial analytics dashboard that helps users track expenses, analyze spending patterns, and gain smart financial insights.",
+    tags: ["Python", "Streamlit", "Financial Analytics", "Data Visualization"],
+    github: "https://github.com/saiupadhyay/Ai-Personal-CFO.git",
+    demo: "#",
+  },
+  {
+    title: "BOOKSआलय – AI-Powered Book Discovery Platform",
+    description:
+      "A personalized book recommendation platform featuring mood-based discovery, goal-based search, and AI-driven summaries using NLP concepts.",
+    tags: ["React.js", "JavaScript", "NLP", "APIs", "CSS"],
+    github: "https://github.com/saiupadhyay/BooksAalay.git",
+    demo: "#",
+  },
+  {
+    title: "Snake Game",
+    description:
+      "A classic snake game built using JavaScript, demonstrating game logic, state handling, and interactive UI behavior.",
+    tags: ["JavaScript", "HTML", "CSS"],
+    github: "https://github.com/saiupadhyay/Snake-Game.git",
+    demo: "#",
+  },
 ];
 
 const Projects = () => {

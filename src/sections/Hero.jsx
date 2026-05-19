@@ -27,12 +27,13 @@ const Hero = () => {
                     <div className="flex justify-center gap-4">
                         <motion.a
                             href="/Sai_Upadhyay.pdf"
-                            download
+                            target="_blank"
+                            rel="noopener noreferrer"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-colors"
                         >
-                            Download Resume
+                            Open Resume
                         </motion.a>
                         <motion.a
                             href="#contact"

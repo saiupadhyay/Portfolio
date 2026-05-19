@@ -3,41 +3,43 @@ import { motion } from 'framer-motion';
 import { Github, ExternalLink, Code2, Terminal } from 'lucide-react';
 
 const projects = [
-    {
-        title: "BOOKSआलय",
-        category: "AI & NLP",
-        description: "A personalized book recommendation platform featuring mood-based discovery and AI-driven summaries. It utilizes Natural Language Processing to understand user preferences and deliver tailored reading suggestions.",
-        tags: ["React.js", "Python", "NLP", "Flask"],
-        github: "https://github.com/saiupadhyay/BooksAalay.git",
-        demo: "#",
-        color: "blue",
-        icon: Terminal,
-        image: "/projects/booksaalay.png"
-    },
-    {
-        title: "Mallow for All",
-        category: "Accessibility & E-commerce",
-        description: "An inclusive e-commerce platform designed with accessibility at its core. It features screen-reader friendly navigation, high-contrast modes, and keyboard-first interactions to ensure equal access for all users.",
-        tags: ["React.js", "A11y", "Tailwind"],
-        github: "https://github.com/saiupadhyay/mallow-for-all-eccom.git",
-        demo: "#",
-        color: "green",
-        icon: Code2,
-        image: "/projects/mallow.png"
-    },
-    {
-        title: "Snake Game",
-        category: "Retro Gaming",
-        description: "A modern implementation of the classic Snake game. Features smooth canvas rendering, score tracking, and progressively increasing difficulty logic built with pure JavaScript.",
-        tags: ["JavaScript", "HTML5 Canvas", "CSS3"],
-        github: "https://github.com/saiupadhyay/Snake-Game.git",
-        demo: "#",
-        color: "purple",
-        icon: Terminal,
-        image: "/projects/snake-game.png"
-    }
+  {
+    title: "AI Personal CFO",
+    category: "AI & Financial Analytics",
+    description:
+      "An AI-powered financial analytics dashboard that helps users track expenses, analyze spending patterns, and gain smart financial insights through interactive visualizations.",
+    tags: ["Python", "Streamlit", "Financial Analytics", "Data Visualization"],
+    github: "https://github.com/saiupadhyay/Ai-Personal-CFO.git",
+    demo: "#",
+    color: "green",
+    icon: Terminal,
+    image: "/projects/CFO.png",
+  },
+  {
+    title: "BOOKSआलय",
+    category: "AI & NLP",
+    description:
+      "A personalized book recommendation platform featuring mood-based discovery and AI-driven summaries. It utilizes Natural Language Processing to understand user preferences and deliver tailored reading suggestions.",
+    tags: ["React.js", "Python", "NLP", "Flask"],
+    github: "https://github.com/saiupadhyay/BooksAalay.git",
+    demo: "#",
+    color: "blue",
+    icon: Terminal,
+    image: "/projects/booksaalay.png",
+  },
+  {
+    title: "Snake Game",
+    category: "Retro Gaming",
+    description:
+      "A modern implementation of the classic Snake game. Features smooth canvas rendering, score tracking, and progressively increasing difficulty logic built with pure JavaScript.",
+    tags: ["JavaScript", "HTML5 Canvas", "CSS3"],
+    github: "https://github.com/saiupadhyay/Snake-Game.git",
+    demo: "#",
+    color: "purple",
+    icon: Terminal,
+    image: "/projects/snake-game.png",
+  },
 ];
-
 const Projects = () => {
     return (
         <section id="projects" className="flex items-center justify-center relative py-32 overflow-hidden">
