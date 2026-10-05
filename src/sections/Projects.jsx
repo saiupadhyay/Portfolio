@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code2, Terminal } from 'lucide-react';
+import { Github, ExternalLink, Code2, Terminal, ShoppingBag } from 'lucide-react';
 
 const projects = [
   {
@@ -8,7 +8,7 @@ const projects = [
     category: "AI & Financial Analytics",
     description:
       "An AI-powered financial analytics dashboard that helps users track expenses, analyze spending patterns, and gain smart financial insights through interactive visualizations.",
-    tags: ["Python", "Streamlit", "Financial Analytics", "Data Visualization"],
+    tags: ["React", "TypeScript", "Gemini API", "Recharts"],
     github: "https://github.com/saiupadhyay/Ai-Personal-CFO.git",
     demo: "#",
     color: "green",
@@ -16,16 +16,30 @@ const projects = [
     image: "/projects/CFO.png",
   },
   {
-    title: "BOOKSआलय",
-    category: "AI & NLP",
+    title: "BlackFits",
+    category: "Streetwear & E-Commerce Platform",
     description:
-      "A personalized book recommendation platform featuring mood-based discovery and AI-driven summaries. It utilizes Natural Language Processing to understand user preferences and deliver tailored reading suggestions.",
-    tags: ["React.js", "Python", "NLP", "Flask"],
-    github: "https://github.com/saiupadhyay/BooksAalay.git",
+      "A modern, high-performance streetwear e-commerce platform designed for heavyweight black apparel. Features an interactive product catalog, custom size & fit guides, a responsive cart drawer, lookbook showcase, and full checkout flow.",
+    tags: ["React", "TypeScript", "Node.js", "Express", "Tailwind CSS"],
+    github: "https://github.com/saiupadhyay/Clothing-website.git",
+    demo: "#",
+    color: "amber",
+    icon: ShoppingBag,
+    image: "/projects/blackfits.png",
+    imageFit: "object-cover object-center",
+  },
+  {
+    title: "Bhidu Bot",
+    category: "Generative AI & Prompt Engineering",
+    description:
+      "An AI-powered savage reply generator that delivers context-aware responses across multiple personalities and aggression levels. Built with structured prompt engineering, conversation memory, and safety moderation.",
+    tags: ["React.js", "TypeScript", "Gemini API", "Prompt Engineering"],
+    github: "https://github.com/saiupadhyay/Bhiduu--The-Savage-Reply-Ai.git",
     demo: "#",
     color: "blue",
     icon: Terminal,
-    image: "/projects/booksaalay.png",
+    image: "/projects/bhiduuubot.png",
+    imageFit: "object-cover object-top",
   },
   {
     title: "Snake Game",
@@ -81,7 +95,7 @@ const Projects = () => {
                                                 <img
                                                     src={project.image}
                                                     alt={project.title}
-                                                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                                                    className={`w-full h-full ${project.imageFit || 'object-cover object-top'} transition-transform duration-700 group-hover:scale-105`}
                                                 />
                                             ) : (
                                                 <div className={`w-full h-full bg-gradient-to-br from-${project.color}-500/10 to-purple-500/10 p-8 flex items-center justify-center relative`}>

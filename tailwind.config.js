@@ -4,6 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    {
+      pattern: /(text|bg|border|from|to)-(green|blue|purple|amber|cyan|rose|orange)-(400|500)/,
+    },
+  ],
   theme: {
     extend: {
       animation: {
