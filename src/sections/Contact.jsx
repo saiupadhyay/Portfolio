@@ -8,25 +8,67 @@ const Contact = () => {
     const formRef = useRef();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const sendEmail = (e) => {
+    const sendEmail = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        const SERVICE_ID = "service_er98ubr";
-        const TEMPLATE_ID = "template_0nd8afh";
-        const PUBLIC_KEY = "s4EInMGcBTMtb2kv8";
+        const form = formRef.current;
+        const formData = new FormData(form);
+        const userName = formData.get("user_name");
+        const userEmail = formData.get("user_email");
+        const userMessage = formData.get("message");
 
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
-            .then((result) => {
-                toast.success("Message sent successfully!");
-                formRef.current.reset();
-            }, (error) => {
-                toast.error("Failed to send message: " + (error.text || error.message || "Unknown error"));
-                console.error("EmailJS Error:", error);
-            })
-            .finally(() => {
-                setIsSubmitting(false);
+        const subject = `Portfolio Inquiry from ${userName || 'Visitor'}`;
+        const bodyContent = `Hi Sai,\n\nYou have received a new query from your portfolio website:\n\nName: ${userName}\nEmail: ${userEmail}\n\nMessage:\n${userMessage}\n`;
+        const mailtoUrl = `mailto:saiupadhyay01@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyContent)}`;
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=saiupadhyay01@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyContent)}`;
+
+        try {
+            // 1. If custom EmailJS environment variables are configured, attempt EmailJS
+            const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+            const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+            const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+            let emailJsSuccess = false;
+            if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY) {
+                try {
+                    await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY);
+                    emailJsSuccess = true;
+                } catch (err) {
+                    console.warn("EmailJS failed, falling back to Netlify Forms:", err);
+                }
+            }
+
+            // 2. Submit to Netlify Forms (for the live Netlify deployment)
+            const netlifyPayload = new URLSearchParams(formData).toString();
+            const res = await fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: netlifyPayload,
             });
+
+            if (res.ok || emailJsSuccess) {
+                toast.success("Message sent! Delivered to saiupadhyay01@gmail.com.", {
+                    description: "You can also open Gmail if you want a direct thread.",
+                    action: {
+                        label: "Open in Gmail",
+                        onClick: () => window.open(gmailUrl, "_blank"),
+                    },
+                    duration: 6000,
+                });
+                form.reset();
+            } else {
+                toast.info("Directing your query to saiupadhyay01@gmail.com via your email client...");
+                window.location.href = mailtoUrl;
+                form.reset();
+            }
+        } catch (error) {
+            console.error("Submission failed:", error);
+            toast.info("Opening your email client to send directly to saiupadhyay01@gmail.com...");
+            window.location.href = mailtoUrl;
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const socialLinks = [
@@ -105,7 +147,22 @@ const Contact = () => {
                         </div>
 
                         {/* Contact Form Plane */}
-                        <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
+                        <form
+                            ref={formRef}
+                            name="contact"
+                            method="POST"
+                            data-netlify="true"
+                            data-netlify-honeypot="bot-field"
+                            onSubmit={sendEmail}
+                            className="space-y-6"
+                        >
+                            {/* Hidden fields for Netlify Forms routing */}
+                            <input type="hidden" name="form-name" value="contact" />
+                            <input type="hidden" name="to_email" value="saiupadhyay01@gmail.com" />
+                            <p className="hidden">
+                                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                            </p>
+
                             <div className="space-y-4">
                                 <div className="relative group">
                                     <input
@@ -144,7 +201,7 @@ const Contact = () => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group"
+                                className="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50"
                             >
                                 {isSubmitting ? (
                                     <>
@@ -158,6 +215,16 @@ const Contact = () => {
                                     </>
                                 )}
                             </button>
+
+                            <p className="text-center text-xs text-gray-500 mt-2">
+                                Messages are delivered directly to{" "}
+                                <a
+                                    href="mailto:saiupadhyay01@gmail.com"
+                                    className="text-blue-400 hover:underline"
+                                >
+                                    saiupadhyay01@gmail.com
+                                </a>
+                            </p>
                         </form>
                     </div>
                 </motion.div>

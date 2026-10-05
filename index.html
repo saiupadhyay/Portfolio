@@ -8,6 +8,12 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Netlify form detection placeholder -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="user_name" />
+      <input type="email" name="user_email" />
+      <textarea name="message"></textarea>
+    </form>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
